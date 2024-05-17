@@ -36,7 +36,7 @@
       ansible.builtin.set_stats:
         data:
           stat7_job2_wf2: "This is set stat agg perhost at Stat7 Job2 WF2"
-        per_host: yes
+        per_host: no
         aggregate: yes
 
     - name: Set Stats no agg no host
