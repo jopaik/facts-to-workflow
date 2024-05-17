@@ -18,7 +18,6 @@
       ansible.builtin.set_stats:
         data:
           stat1_job1_wf1: "This is set stat agg perhost at Stat1 Job1 WF1"
-        per_host: no
         aggregate: yes
 
     - name: Set Stats no agg no host
