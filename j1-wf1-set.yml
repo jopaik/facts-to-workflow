@@ -17,13 +17,14 @@
     - name: Set Stats default
       ansible.builtin.set_stats:
         data:
-          stat1_job1_wf1: "This is set stat at Stat1 Job1 WF1"
+          stat1_job1_wf1: "This is set stat agg perhost at Stat1 Job1 WF1"
+        per_host: yes
         aggregate: yes
 
     - name: Set Stats no agg no host
       ansible.builtin.set_stats:
         data:
-          stat2_job1_wf1: "This is set stat cached at Stat2 Job1 WF1"
+          stat2_job1_wf1: "This is set stat no agg no perhost at Stat2 Job1 WF1"
         per_host: no
         aggregate: no
 
