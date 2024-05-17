@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: False
   vars:
-    show_custom_stats: true
+    ANSIBLE_SHOW_CUSTOM_STATS: true
   tasks:
     - name: Set Facts 
       ansible.builtin.set_fact:
