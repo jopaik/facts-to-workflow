@@ -1,6 +1,6 @@
 ---
 - name: Set Facts Job1 Workflow1
-  hosts: localhost
+  hosts: all
   gather_facts: False
   vars:
     show_custom_stats: true
