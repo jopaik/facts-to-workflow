@@ -27,18 +27,24 @@
     - name: Set Stats default
       ansible.builtin.set_stats:
         data:
-            stat1_job1_wf1: "This is set stat agg at Job2 WF1"
+            stat1_job1_wf1: "{{ item }}"
         per_host: no
         aggregate: yes
+      loop:
+        - "three job2 wf1,"
+        - "four job2 wf1"
 
     - name: Set Stats 9 j2 wf1
       ansible.builtin.set_stats:
           data:
             stat9_dict:
-              stat9_job1_wf1: "This is set stat agg at Job2 WF1"
+              stat9_job1_wf1: "{{ item }}"
           per_host: no
           aggregate: yes
-
+      loop:
+        - "three job2 wf1"
+        - "four job2 wf1"
+        
     # - name: Set Stats no agg no host
     #   ansible.builtin.set_stats:
     #     data:
