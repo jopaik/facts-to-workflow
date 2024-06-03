@@ -8,11 +8,12 @@
 
     - name: Print Vars
       debug:
-        msg:
-          - "Fact1 Job1 WF1 {{ fact1_job1_wf1 | default('not set') }}"
+        msg:       
+          - "Fact1 Job1 WF1 {{ fact1_dict.fact1_job1_wf1 | default('not set') }}"
           - "Fact2 Job1 WF1 {{ fact2_job1_wf1 | default('not set') }}"
           - "Stat1 Job1 WF1 {{ stat1_job1_wf1 | default('not set') }}"
           - "Stat2 Job1 WF1 {{ stat2_job1_wf1 | default('not set') }}"
+          - "Stat9 Job1 WF1 {{ stat9_dict.stat9_job1_wf1 | default('not set') }}"
           - "Fact3 Job2 WF1 {{ fact3_job2_wf1 | default('not set') }}"
           - "Fact4 Job2 WF1 {{ fact4_job2_wf1 | default('not set') }}"
           - "Stat3 Job2 WF1 {{ stat3_job2_wf1 | default('not set') }}"
@@ -21,7 +22,6 @@
           - "Fact6 Job1 WF2 {{ fact6_job1_wf2 | default('not set') }}"
           - "Stat5 Job1 WF2 {{ stat5_job1_wf2 | default('not set') }}"
           - "Stat6 Job1 WF2 {{ stat6_job1_wf2 | default('not set') }}"
-
 
     - name: Set Facts 
       ansible.builtin.set_fact:
@@ -35,7 +35,7 @@
     - name: Set Stats default
       ansible.builtin.set_stats:
         data:
-          stat7_job2_wf2: "This is set stat agg perhost at Stat7 Job2 WF2"
+          stat7_job2_wf2: "This is set stat agg at Stat7 Job2 WF2"
         aggregate: yes
 
     - name: Set Stats no agg no host
@@ -52,6 +52,7 @@
           - "Fact2 Job1 WF1 {{ fact2_job1_wf1 | default('not set') }}"
           - "Stat1 Job1 WF1 {{ stat1_job1_wf1 | default('not set') }}"
           - "Stat2 Job1 WF1 {{ stat2_job1_wf1 | default('not set') }}"
+          - "Stat9 Job1 WF1 {{ stat9_dict.stat9_job1_wf1 | default('not set') }}"
           - "Fact3 Job2 WF1 {{ fact3_job2_wf1 | default('not set') }}"
           - "Fact4 Job2 WF1 {{ fact4_job2_wf1 | default('not set') }}"
           - "Stat3 Job2 WF1 {{ stat3_job2_wf1 | default('not set') }}"
