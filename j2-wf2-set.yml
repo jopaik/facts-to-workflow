@@ -26,7 +26,6 @@
     - name: Set Stats default
       ansible.builtin.set_stats:
         data:
-          stat1_dict:
             stat1_job1_wf1: "This is set stat agg at Job2 WF2"
         aggregate: yes
 
