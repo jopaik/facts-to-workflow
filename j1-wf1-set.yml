@@ -5,14 +5,10 @@
   vars:
     ANSIBLE_SHOW_CUSTOM_STATS: true
   tasks:
-    # - name: Set Facts 
-    #   ansible.builtin.set_fact:
-    #       fact1_job1_wf1: "This is set fact at Job1 WF1"
-
-    # - name: Set Facts Cached
-    #   ansible.builtin.set_fact:
-    #     fact2_job1_wf1: "This is set fact cached at Job1 WF1"
-    #     cacheable: yes
+    - name: Print Vars before
+      debug:
+        msg:
+          - "Stat1 Job1 WF1 {{ stat1_job1_wf1 | default('not set') }}"
 
     - name: Set Stats j1 wf1
       ansible.builtin.set_stats:
@@ -24,28 +20,9 @@
         - "one j1 wf1,"
         - "two j1 wf1"
 
-    - name: Set Stats 9 j1 wf1
-      ansible.builtin.set_stats:
-          data:
-            stat9_dict:
-              stat9_job1_wf1: " {{ item }} "
-          per_host: no
-          aggregate: yes
-      loop:
-        - "one j1 wf1,"
-        - "two j1 wf1"
-    # - name: Set Stats no agg no host
-    #   ansible.builtin.set_stats:
-    #     data:
-    #       stat2_job1_wf1: "This is set stat no agg at Job1 WF1"
-    #     per_host: no
-    #     aggregate: no
 
-    - name: Print Vars
+    - name: Print Vars after
       debug:
         msg:
-          # - "Fact1 Job1 WF1 {{ fact1_job1_wf1 | default('not set') }}"
-          # - "Fact2 Job1 WF1 {{ fact2_job1_wf1 | default('not set') }}"
           - "Stat1 Job1 WF1 {{ stat1_job1_wf1 | default('not set') }}"
-          # - "Stat2 Job1 WF1 {{ stat2_job1_wf1 | default('not set') }}"
-          - "Stat9 Job1 WF1 {{ stat9_dict.stat9_job1_wf1 | default('not set') }}"
+ 

@@ -6,87 +6,23 @@
     ANSIBLE_SHOW_CUSTOM_STATS: true
   tasks:
 
-    - name: Print Vars
-      debug:
-        msg:       
-          # - "Fact1 Job1 WF1 {{ fact1_dict.fact1_job1_wf1 | default('not set') }}"
-          # - "Fact2 Job1 WF1 {{ fact2_job1_wf1 | default('not set') }}"
-          - "Stat1 Job1 WF1 {{ stat1_job1_wf1 | default('not set') }}"
-          # - "Stat2 Job1 WF1 {{ stat2_job1_wf1 | default('not set') }}"
-          - "Stat9 Job1 WF1 {{ stat9_dict.stat9_job1_wf1 | default('not set') }}"
-          # - "Fact3 Job2 WF1 {{ fact3_job2_wf1 | default('not set') }}"
-          # - "Fact4 Job2 WF1 {{ fact4_job2_wf1 | default('not set') }}"
-          # - "Stat3 Job2 WF1 {{ stat3_job2_wf1 | default('not set') }}"
-          # - "Stat4 Job2 WF1 {{ stat4_job2_wf1 | default('not set') }}"
-          # - "Fact5 Job1 WF2 {{ fact5_job1_wf2 | default('not set') }}"
-          # - "Fact6 Job1 WF2 {{ fact6_job1_wf2 | default('not set') }}"
-          # - "Stat5 Job1 WF2 {{ stat5_job1_wf2 | default('not set') }}"
-          # - "Stat6 Job1 WF2 {{ stat6_job1_wf2 | default('not set') }}"
-                
-    - name: Set Stats default
-      ansible.builtin.set_stats:
-        data:
-            stat1_job1_wf1: "This is set stat agg at Job2 WF2"
-        per_host: no
-        aggregate: yes
-
-    - name: Set Stats 9 j1 wf1
-      ansible.builtin.set_stats:
-          data:
-            stat9_dict:
-              stat9_job1_wf1: "This is set stat agg at Job2 WF2"
-          per_host: no
-          aggregate: yes
-
-    # - name: Set Stats no agg no host
-    #   ansible.builtin.set_stats:
-    #     data:
-    #       stat2_job1_wf1: "This is set stat no agg at Job2 WF2"
-    #     per_host: no
-    #     aggregate: no
-
-    # - name: Set Facts 
-    #   ansible.builtin.set_fact:
-    #     fact7_job2_wf2: "This is set fact at Fact7 Job2 WF2"
-
-    # - name: Set Facts Cached
-    #   ansible.builtin.set_fact:
-    #     fact8_job2_wf2: "This is set fact cached at Fact8 Job2 WF2"
-    #     cacheable: yes
-
-    # - name: Set Stats default
-    #   ansible.builtin.set_stats:
-    #     data:
-    #       stat7_job2_wf2: "This is set stat agg at Stat7 Job2 WF2"
-    #     aggregate: yes
-
-    # - name: Set Stats no agg no host
-    #   ansible.builtin.set_stats:
-    #     data:
-    #       stat8_job2_wf2: "This is set stat no agg no perhostat Stat8 Job2 WF2"
-    #     per_host: no
-    #     aggregate: no
-
-    - name: Print Vars
+    - name: Print Vars before
       debug:
         msg:
-          # - "Fact1 Job1 WF1 {{ fact1_job1_wf1 | default('not set') }}"
-          # - "Fact2 Job1 WF1 {{ fact2_job1_wf1 | default('not set') }}"
           - "Stat1 Job1 WF1 {{ stat1_job1_wf1 | default('not set') }}"
-          # - "Stat2 Job1 WF1 {{ stat2_job1_wf1 | default('not set') }}"
-          - "Stat9 Job1 WF1 {{ stat9_dict.stat9_job1_wf1 | default('not set') }}"
-          # - "Fact3 Job2 WF1 {{ fact3_job2_wf1 | default('not set') }}"
-          # - "Fact4 Job2 WF1 {{ fact4_job2_wf1 | default('not set') }}"
-          # - "Stat3 Job2 WF1 {{ stat3_job2_wf1 | default('not set') }}"
-          # - "Stat4 Job2 WF1 {{ stat4_job2_wf1 | default('not set') }}"
-          # - "Fact5 Job1 WF2 {{ fact5_job1_wf2 | default('not set') }}"
-          # - "Fact6 Job1 WF2 {{ fact6_job1_wf2 | default('not set') }}"
-          # - "Stat5 Job1 WF2 {{ stat5_job1_wf2 | default('not set') }}"
-          # - "Stat6 Job1 WF2 {{ stat6_job1_wf2 | default('not set') }}"
-          # - "Fact7 Job2 WF2 {{ fact7_job2_wf2 | default('not set') }}"
-          # - "Fact8 Job2 WF2 {{ fact8_job2_wf2 | default('not set') }}"
-          # - "Stat7 Job2 WF2 {{ stat7_job2_wf2 | default('not set') }}"
-          # - "Stat8 Job2 WF2 {{ stat8_job2_wf2 | default('not set') }}"
 
+    - name: Set Stats j2 wf2
+      ansible.builtin.set_stats:
+        data:
+            stat1_job1_wf1: "{{ item }}"
+        per_host: no
+        aggregate: yes
+      loop:
+        - "seven job2 wf2,"
+        - "eight job2 wf2"
 
-
+    - name: Print Vars after
+      debug:
+        msg:
+          - "Stat1 Job1 WF1 {{ stat1_job1_wf1 | default('not set') }}"
+ 
