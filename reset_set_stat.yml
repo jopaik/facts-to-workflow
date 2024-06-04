@@ -5,14 +5,6 @@
   vars:
     ANSIBLE_SHOW_CUSTOM_STATS: true
   tasks:
-    # - name: Set Facts 
-    #   ansible.builtin.set_fact:
-    #       fact1_job1_wf1: "This is set fact at Job1 WF1"
-
-    # - name: Set Facts Cached
-    #   ansible.builtin.set_fact:
-    #     fact2_job1_wf1: "This is set fact cached at Job1 WF1"
-    #     cacheable: yes
 
     - name: Print Vars
       debug:
